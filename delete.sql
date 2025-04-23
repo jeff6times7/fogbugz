@@ -1,0 +1,13 @@
+delete from PERSON;
+delete from PROJECT;
+delete from PRIORITY;
+delete from MILESTONE;
+delete from CATEGORY;
+delete from STATUS;
+delete from KANBAN_COLUMN;
+delete from AREA;
+delete from TICKET;
+delete from RELATED_TICKET;
+delete from EVENT;
+delete from EVENT_COMMENT;
+delete from ATTACHMENT;
