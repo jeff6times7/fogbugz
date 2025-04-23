@@ -14,11 +14,11 @@ Use this project to extract (dump) data from a Fogbugz web site using its JSON a
 The process is not too complicated.
 
 1. Edit configuration file, fogbugz.cfg
-    a. set the host value to the host of the Fogbugz web site from which you will extract data.
-    a. set the apiToken value to the api token value you get from your fogbugz administrative page
-    a. set the stageDir to the output directory to store dumped files
-    a. set the casePerFetch to the number of cases to fetch for every request to get case detail
-    a. set the caseCols to the list of columns to get in the case detail requests
+    - set the host value to the host of the Fogbugz web site from which you will extract data.
+    - set the apiToken value to the api token value you get from your fogbugz administrative page
+    - set the stageDir to the output directory to store dumped files
+    - set the casePerFetch to the number of cases to fetch for every request to get case detail
+    - set the caseCols to the list of columns to get in the case detail requests
 1. Execute dump.py
 1. Create a database
 1. Execute populate.py
