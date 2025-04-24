@@ -6,6 +6,7 @@ import json
 import requests
 import pathlib
 import shutil
+import datetime
 
 with open('fogbugz.cfg', 'r') as f:
     cfg = json.load(f)
@@ -23,9 +24,16 @@ stat_url  = urlPref + 'listStatuses'
 mile_url  = urlPref + 'listFixFors'
 case_url  = urlPref + 'listCases'
 
+def printableTime():
+    now = datetime.datetime.now()
+    return now.strftime("%H:%M:%S")
+
+def tprint(msg):
+    print(f"{printableTime()} {msg}")
+
 def fetchDictVerbose(fetchURL, jsonArgs, dictPath, description, verbose):
     if verbose:
-        print('Fetching ' + description)
+        tprint('Fetching ' + description)
     resp = requests.post(url=fetchURL, json=jsonArgs)
     contentType = resp.headers.get("Content-Type", "")
     if ('json' in contentType):
@@ -46,7 +54,7 @@ def stageDictVerbose(filename, data, description, verbose):
     dir = os.path.dirname(pathname)
     pathlib.Path(dir).mkdir(parents=True, exist_ok=True)
     if verbose:
-        print('Writing {} to {}'.format(description, pathname));
+        tprint('Writing {} to {}'.format(description, pathname));
     handle = open(pathname, "w")
     json.dump(data, handle)
     handle.close()
@@ -105,9 +113,9 @@ def downloadTicketAttachment(case, event, attachment, attachmentIndex):
 ticketsDownloaded = 0
 ticketCountFloat = float(len(sortedCases))
 
-def printPct():
+def tprintPct():
     pct = float(ticketsDownloaded) * 100.0 / ticketCountFloat
-    print(f"{pct:.1f}%", end='\r')
+    print(f"{printableTime()} {pct:.1f}%", end='\r')
 
 def downloadTicketRange(cases, firstCaseNum, lastCaseNum):
     global ticketsDownloaded
@@ -129,7 +137,7 @@ def downloadTicketRange(cases, firstCaseNum, lastCaseNum):
                 downloadTicketAttachment(case, event, attachment, evtAttInd)
                 evtAttInd += 1
         ticketsDownloaded += 1;
-        printPct()
+        tprintPct()
 
 def makeTicketRange(list, i, n):
     range = {}
@@ -141,13 +149,13 @@ def makeTicketRange(list, i, n):
 n = int(cfg["casePerFetch"])
 ticketRanges = [makeTicketRange(sortedCases, i, n) for i in range(0, len(sortedCases), n)]
 
-print('Fetching ticket detail')
-printPct()
+tprint('Fetching ticket detail')
+tprintPct()
 for i in range(len(ticketRanges)):
     range = ticketRanges[i]
     downloadTicketRange(sortedCases, range['first'], range['last'])
 
 print("")
-print("Done")
+tprint("Done")
 
 sys.exit(0)
