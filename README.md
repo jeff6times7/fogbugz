@@ -29,7 +29,7 @@ Neither python script takes arguments. All options, which are few, are defined i
 
 To create the schema, you execute create.sql. There are scripts for dropping tables and deleting rows.
 
-To create the sqlite database, I do this:
+To create the sqlite database and schema, I do this:
 
     sqlite3 fogbugz.db
     sqlite> .read create.sql
