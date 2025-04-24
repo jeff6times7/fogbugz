@@ -77,5 +77,4 @@ If you inspect the JSON that is extracted for a case, you'll see these two key-v
       "ixPriority": 3,
       "sPriority": "Required"
 
-If all priorities would be extracted with the listProrities command, then there would be no need to store sPriority on a case record. But there are some data that are not extractable in the obvious way. So, this "backpatching" method is necessary for some things.
-
+If all priorities would be extracted with the listProrities command, then there would be no need to store sPriority on a case record. But there are some data that are not extractable in the obvious way. So, this "backpatching" method is necessary for some tables.
