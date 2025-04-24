@@ -62,7 +62,7 @@ These documents will show you how the URLs are composed and how to select column
 
 Even though you can get kanban column details, there is no provision for downloading planner details. I have logged fogbugz case 60026168 to request changes to the API.
 
-I have not seen any problems downloading 100 cases at a time but I have seen a HTTPD 500 error when I accidentally tried downloading thousands of cases with one HTTP request.
+I have not seen any problems downloading 100 cases at a time but I have seen a HTTP 500 error when I accidentally tried downloading thousands of cases with one HTTP request.
 
 There are a number of denormalizations in the data returned by various HTTP requests. When you read populate.py, you'll see places where a call is made to reinsertTable(). This is attempt to insert rows into a referenced table with values that will be inserted into the referencing table (i.e., the following insertTable). Doing it this way allows populate.py to enable foreign key constraints.
 
