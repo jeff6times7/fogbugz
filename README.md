@@ -56,7 +56,7 @@ I also found this to be helpful:
 
     https://fogbugz.unco.mcgware.com/help/topics/advanced/API.html
 
-These documents will show you how the URLs are composed and how to select columns for cases that you want to download. If you add columns for downloading and you want them to be part of the schema loaded with populate.py, then you will need to edit the dicts related to those tables.
+These documents will show you how the URLs are composed and how to select columns for cases that you want to download. If you add columns for downloading and you want them to be part of the schema loaded with populate.py, then you will need to modify the dicts in populate.py related to those tables.
 
 # LIMITATIONS and BUGS
 
